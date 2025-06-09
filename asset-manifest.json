@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/damirios/kazan-routes/static/css/main.ae97aca5.css",
+    "main.js": "/damirios/kazan-routes/static/js/main.0388f78a.js",
+    "index.html": "/damirios/kazan-routes/index.html",
+    "main.ae97aca5.css.map": "/damirios/kazan-routes/static/css/main.ae97aca5.css.map",
+    "main.0388f78a.js.map": "/damirios/kazan-routes/static/js/main.0388f78a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ae97aca5.css",
+    "static/js/main.0388f78a.js"
+  ]
+}
