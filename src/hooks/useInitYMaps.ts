@@ -28,6 +28,10 @@ export const useInitYMaps = () => {
 
       setYmapsReact(yampsReact);
     };
+
+    script.onerror = (error) => {
+      console.error(error);
+    };
   }, []);
 
   return { ymapsReact, setYmapsReact };
