@@ -14,10 +14,10 @@ export const useInitYMaps = () => {
     const script = document.createElement("script");
     document.body.appendChild(script);
     script.type = "text/javascript";
-    script.src = `https://api-maps.yandex.ru/v3/?apikey=39ad2fc5-1031-4589-8be5-7cd66ed33476&lang=ru-RU`;
+    script.src = `https://api-maps.yandex.ru/v3/?apikey=${process.env.REACT_APP_YANDEX_API_KEY}&lang=ru-RU`;
     script.onload = async () => {
       const ymaps = window.ymaps3;
-
+      console.log("window.ymaps3: ", window.ymaps3);
       const [ymaps3React] = await Promise.all([
         ymaps.import("@yandex/ymaps3-reactify"),
         ymaps.ready,
