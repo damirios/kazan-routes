@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from "react";
+import { FC, Fragment, MouseEvent } from "react";
 
 import { YMapMarker as YMapMarkerType } from "@yandex/ymaps3-types";
 import { SingleRoute } from "./SingleRoute";
@@ -13,7 +13,11 @@ export const RoutesOnMap: FC<Props> = ({ routes, YMapMarker }) => {
     event.stopPropagation();
   };
 
-  return routes.map((route) => (
-    <SingleRoute key={route.id} route={route} YMapMarker={YMapMarker} />
-  ));
+  return (
+    <Fragment>
+      {routes.map((route) => (
+        <SingleRoute key={route.id} route={route} YMapMarker={YMapMarker} />
+      ))}
+    </Fragment>
+  );
 };
