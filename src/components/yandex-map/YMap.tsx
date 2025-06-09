@@ -69,6 +69,7 @@ export const YMapComponent = () => {
   };
 
   if (!ymapsReact) {
+    console.log("no y maps: ", ymapsReact);
     return null;
   }
 

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { supabaseClient } from "../supabase";
 import { getAllRoutes } from "../supabaseUtils";
 import { IRoute } from "../types";
 
