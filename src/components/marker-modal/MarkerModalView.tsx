@@ -1,12 +1,11 @@
 import { FC, MouseEvent, useContext, useEffect, useRef, useState } from "react";
 
 import { downloadImage, getBiologyById } from "../../supabaseUtils";
-import { IBiology, INullable, IRoute, RouteDataUnitEnum } from "../../types";
+import { IBiology, INullable, IRoute } from "../../types";
 import { RouteContext } from "../../contexts";
 
 import "./style.route.css";
 
-const { COMMON, BIOLOGY } = RouteDataUnitEnum;
 // const { COMMON, BIOLOGY, GEOGRAPHY, HISTORY } = RouteDataUnitEnum;
 
 type AllRouteData = Pick<IRoute, "id" | "description" | "image"> & {

@@ -44,6 +44,7 @@ export const YMapComponent = () => {
     modalsContainer.classList.remove("active");
   };
 
+  // @ts-ignore
   const handleClick = (a, { coordinates }, c) => {
     setNewMarker(coordinates);
     setShowModal(true);
@@ -75,7 +76,9 @@ export const YMapComponent = () => {
     YMap,
     YMapMarker,
     YMapDefaultSchemeLayer,
+    // @ts-ignore
     YMapDefaultFeaturesLayer,
+    // @ts-ignore
     YMapListener,
   } = ymapsReact;
 
