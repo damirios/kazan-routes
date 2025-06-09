@@ -4,7 +4,7 @@ import { downloadImage, getBiologyById } from "../../supabaseUtils";
 import { IBiology, INullable, IRoute } from "../../types";
 import { RouteContext } from "../../contexts";
 
-import "./style.route.css";
+import "./style.route.scss";
 
 // const { COMMON, BIOLOGY, GEOGRAPHY, HISTORY } = RouteDataUnitEnum;
 

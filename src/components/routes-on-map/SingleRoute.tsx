@@ -1,16 +1,21 @@
 import { FC, MouseEvent, useContext } from "react";
 
 import { YMapMarker as YMapMarkerType } from "@yandex/ymaps3-types";
+
+import { RouteMarker } from "./RouteMarker";
+
 import { RouteContext } from "../../contexts";
+import { IRoute } from "../../types";
 
 type Props = {
-  route: any;
+  route: IRoute;
   YMapMarker: YMapMarkerType;
 };
 
 export const SingleRoute: FC<Props> = ({ route, YMapMarker }) => {
-  const { setClickedRoute } = useContext(RouteContext) ?? {};
+  const { description, id, lat, lon } = route;
 
+  const { setClickedRoute } = useContext(RouteContext) ?? {};
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
     setClickedRoute?.(route);
@@ -18,18 +23,9 @@ export const SingleRoute: FC<Props> = ({ route, YMapMarker }) => {
 
   return (
     // @ts-ignore
-    <YMapMarker key={route.id} coordinates={[route.lon, route.lat]}>
-      <div
-        className="marker"
-        style={{
-          width: 20,
-          height: 20,
-          borderRadius: "50%",
-          backgroundColor: "red",
-          opacity: 0.6,
-        }}
-        onClick={handleClick}
-      ></div>
+    <YMapMarker key={id} coordinates={[lon, lat]}>
+      {/* <RouteMarker onClick={handleClick} title={description} /> */}
+      <RouteMarker onClick={handleClick} />
     </YMapMarker>
   );
 };

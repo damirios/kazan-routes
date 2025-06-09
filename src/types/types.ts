@@ -4,6 +4,13 @@ export type ExpandedFeature = Feature & { id: string };
 
 export type INullable<T> = T | null;
 
+export enum RouteDataUnitEnum {
+  COMMON = "common",
+  BIOLOGY = "biology",
+  // GEOGRAPHY = "geography",
+  // HISTORY = "history",
+}
+
 /** Данные маршрута */
 export type IRouteData = {
   /** Общие */
@@ -23,13 +30,6 @@ type IRouteDataUnit = {
   /** Изображение */
   image: INullable<File>;
 };
-
-export enum RouteDataUnitEnum {
-  COMMON = "common",
-  BIOLOGY = "biology",
-  // GEOGRAPHY = "geography",
-  // HISTORY = "history",
-}
 
 export enum RouteDataTypeEnum {
   FILE = "FILE",

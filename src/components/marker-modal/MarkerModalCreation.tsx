@@ -1,14 +1,18 @@
 import { ChangeEvent, FC, MouseEvent, useRef, useState } from "react";
+
+import clsx from "clsx";
 import { v4 as uuidv4 } from "uuid";
 
-import "./style.marker.css";
 import { RouteUnitBlock } from "./RouteUnitBlock";
+
 import {
   createNewBiology,
   createNewRoute,
   uploadImage,
 } from "../../supabaseUtils";
 import { IRouteData, RouteDataUnitEnum } from "../../types";
+
+import "./style.marker.scss";
 
 const { COMMON, BIOLOGY } = RouteDataUnitEnum;
 // const { COMMON, BIOLOGY, GEOGRAPHY, HISTORY } = RouteDataUnitEnum;
@@ -26,6 +30,8 @@ export const MarkerModalCreation: FC<Props> = ({
 }) => {
   const backdropRef = useRef<HTMLDivElement>(null);
 
+  /** Создаётся ли в данный момент маркер */
+  const [isCreatingMarker, setIsCreatingMarker] = useState<boolean>(false);
   const [routeData, setRouteData] = useState<IRouteData>({
     [COMMON]: {
       text: "",
@@ -79,25 +85,35 @@ export const MarkerModalCreation: FC<Props> = ({
     const commonImage = routeData[COMMON].image;
     const biologyImage = routeData[BIOLOGY].image;
 
-    if (commonImage && biologyImage) {
+    if (!commonImage || !biologyImage) {
+      return;
+    }
+
+    try {
+      setIsCreatingMarker(true);
+
+      // Загружаем картинку из секции common в storage
       const commonImageFileName = uuidv4();
       const commonImageResult = await uploadImage({
         fileName: commonImageFileName,
         image: commonImage,
       });
 
+      // Загружаем картинку из секции biology в storage
       const biologyImageFileName = uuidv4();
       const biologyImageResult = await uploadImage({
         fileName: biologyImageFileName,
         image: biologyImage,
       });
 
+      // Создаём запись в таблице biology
       const biologyRecordId = await createNewBiology({
         image: biologyImageFileName,
         text: routeData[BIOLOGY].text,
       });
 
       if (biologyRecordId !== null) {
+        // Создаём запись в таблице routes
         await createNewRoute({
           biology_id: biologyRecordId,
           description: routeData[COMMON].text,
@@ -106,14 +122,26 @@ export const MarkerModalCreation: FC<Props> = ({
           lat: coordinates[1],
         });
       }
-    }
 
-    onCreateMarker();
-    console.log("routeData: ", routeData);
+      onCreateMarker();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsCreatingMarker(false);
+    }
   };
 
   const { common, biology } = routeData ?? {};
   // const { common, biology, geography, history } = routeData ?? {};
+
+  const createButtonClassName = clsx(
+    "new-marker__create",
+    isCreatingMarker && "new-marker__create_disabled"
+  );
+  const cancelButtonClassName = clsx(
+    "new-marker__cancel",
+    isCreatingMarker && "new-marker__cancel_disabled"
+  );
 
   return (
     <div className="new-marker" onClick={handleClickBackdrop} ref={backdropRef}>
@@ -145,10 +173,14 @@ export const MarkerModalCreation: FC<Props> = ({
         /> */}
 
         <div className="new-marker__buttons">
-          <button className="new-marker__create" onClick={handleClickCreate}>
+          <button
+            className={createButtonClassName}
+            onClick={handleClickCreate}
+            disabled={isCreatingMarker}
+          >
             Создать маркер
           </button>
-          <button className="new-marker__cancel" onClick={onClose}>
+          <button className={cancelButtonClassName} onClick={onClose}>
             Отмена
           </button>
         </div>

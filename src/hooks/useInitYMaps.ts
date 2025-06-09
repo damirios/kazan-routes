@@ -16,7 +16,6 @@ export const useInitYMaps = () => {
     script.src = `https://api-maps.yandex.ru/v3/?apikey=${process.env.REACT_APP_YANDEX_API_KEY}&lang=ru-RU`;
     script.onload = async () => {
       const ymaps = window.ymaps3;
-      console.log("window.ymaps3: ", window.ymaps3);
       const [ymaps3React] = await Promise.all([
         ymaps.import("@yandex/ymaps3-reactify"),
         ymaps.ready,
@@ -27,7 +26,7 @@ export const useInitYMaps = () => {
 
       setYmapsReact(yampsReact);
     };
-    console.log("window.ymaps3:", window.ymaps3);
+
     script.onerror = (error) => {
       console.error(error);
     };
