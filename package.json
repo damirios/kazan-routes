@@ -1,7 +1,7 @@
 {
   "name": "routes-project",
   "version": "0.1.0",
-  "homepage": "https://github.com/damirios/kazan-routes",
+  "homepage": "https://damirios.github.io/kazan-routes",
   "private": true,
   "dependencies": {
     "@supabase/supabase-js": "^2.50.0",
