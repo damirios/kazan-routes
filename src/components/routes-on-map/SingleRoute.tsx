@@ -17,6 +17,7 @@ export const SingleRoute: FC<Props> = ({ route, YMapMarker }) => {
   };
 
   return (
+    // @ts-ignore
     <YMapMarker key={route.id} coordinates={[route.lon, route.lat]}>
       <div
         className="marker"

@@ -9,10 +9,6 @@ type Props = {
 };
 
 export const RoutesOnMap: FC<Props> = ({ routes, YMapMarker }) => {
-  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation();
-  };
-
   return (
     <Fragment>
       {routes.map((route) => (
