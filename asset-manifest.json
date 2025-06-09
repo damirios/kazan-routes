@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/kazan-routes/static/css/main.ae97aca5.css",
-    "main.js": "/kazan-routes/static/js/main.c3b9ab9b.js",
+    "main.js": "/kazan-routes/static/js/main.bb1585f4.js",
     "index.html": "/kazan-routes/index.html",
     "main.ae97aca5.css.map": "/kazan-routes/static/css/main.ae97aca5.css.map",
-    "main.c3b9ab9b.js.map": "/kazan-routes/static/js/main.c3b9ab9b.js.map"
+    "main.bb1585f4.js.map": "/kazan-routes/static/js/main.bb1585f4.js.map"
   },
   "entrypoints": [
     "static/css/main.ae97aca5.css",
-    "static/js/main.c3b9ab9b.js"
+    "static/js/main.bb1585f4.js"
   ]
 }
