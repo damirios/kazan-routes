@@ -1,6 +1,7 @@
 {
   "name": "routes-project",
   "version": "0.1.0",
+  "homepage": "https://github.com/damirios/kazan-routes",
   "private": true,
   "dependencies": {
     "@supabase/supabase-js": "^2.50.0",
@@ -23,7 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "@yandex/ymaps3-types": "^1.0.16662021"
+    "@yandex/ymaps3-types": "^1.0.16662021",
+    "gh-pages": "^6.3.0"
   }
 }
