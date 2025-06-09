@@ -12,7 +12,6 @@ export const useInitYMaps = () => {
 
   useEffect(() => {
     const script = document.createElement("script");
-    document.body.appendChild(script);
     script.type = "text/javascript";
     script.src = `https://api-maps.yandex.ru/v3/?apikey=${process.env.REACT_APP_YANDEX_API_KEY}&lang=ru-RU`;
     script.onload = async () => {
@@ -28,10 +27,12 @@ export const useInitYMaps = () => {
 
       setYmapsReact(yampsReact);
     };
-
+    console.log("window.ymaps3:", window.ymaps3);
     script.onerror = (error) => {
       console.error(error);
     };
+
+    document.body.appendChild(script);
   }, []);
 
   return { ymapsReact, setYmapsReact };
