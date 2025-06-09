@@ -1,11 +1,6 @@
 import { FC, MouseEvent, useContext, useEffect, useRef, useState } from "react";
 
-import { RouteUnitBlock } from "./RouteUnitBlock";
-import {
-  downloadImage,
-  getBiologyById,
-  getTableRowById,
-} from "../../supabaseUtils";
+import { downloadImage, getBiologyById } from "../../supabaseUtils";
 import { IBiology, INullable, IRoute, RouteDataUnitEnum } from "../../types";
 import { RouteContext } from "../../contexts";
 
